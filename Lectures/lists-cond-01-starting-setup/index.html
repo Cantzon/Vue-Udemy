@@ -18,11 +18,11 @@
 </header>
 <section id="user-goals">
     <h2>My course goals</h2>
-    <input v-model="currGoal" type="text"/>
+    <input v-model="currGoal" @keyup.enter="addGoal" type="text"/>
     <button @click="addGoal">Add Goal</button>
     <p v-if="!haveGoals">No goals have been added yet - please start adding some!</p>
     <ul v-else>
-        <li v-for="(goal,idx) in goals">{{ goal }} <button @click="goals.splice(idx,1)"> X </button></li>
+        <li v-for="(goal,idx) in goals">{{idx+1}}. {{ goal }} <button @click="goals.splice(idx,1)"> X </button></li>
     </ul>
 </section>
 </body>

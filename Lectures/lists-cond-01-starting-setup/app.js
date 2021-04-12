@@ -17,6 +17,7 @@ const app = Vue.createApp({
     methods: {
         addGoal() {
             this.goals.push(this.currGoal);
+            this.currGoal = '';
         }
     }
 });
