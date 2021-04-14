@@ -11,6 +11,7 @@ const app = Vue.createApp({
             fullHealth: true,
             gameOver: false,
             winner: null,
+            logs: [],
         };
     },
     watch: {
@@ -48,16 +49,21 @@ const app = Vue.createApp({
     methods: {
         attackMonster() {
             this.roundsSinceSpecial++;
-            this.monsterHealth -= generateRandomAmount(5, 10);
+            const attackValue = generateRandomAmount(5, 10);
+            this.monsterHealth -= attackValue;
+            this.addLogMessage('player', 'attack', attackValue);
             this.attackPlayer();
         },
         attackPlayer() {
-            this.playerHealth -= generateRandomAmount(8, 12);
-            console.log(this.playerHealth + ' ' + this.monsterHealth);
+            const attackValue = generateRandomAmount(8, 15);
+            this.playerHealth -= attackValue;
+            this.addLogMessage('monster', 'attack', attackValue);
         },
         specialAttackMonster() {
             this.roundsSinceSpecial = 0;
-            this.monsterHealth -= generateRandomAmount(10, 25);
+            const attackValue = generateRandomAmount(10, 25);
+            this.monsterHealth -= attackValue;
+            this.addLogMessage('player', 'specialAttack', attackValue);
             this.attackPlayer();
         },
         healPlayer() {
@@ -68,17 +74,43 @@ const app = Vue.createApp({
             } else {
                 this.playerHealth += healValue;
             }
+            this.addLogMessage('player', 'heal', healValue);
             this.attackPlayer();
         },
         surrender() {
             this.gameOver = true;
             this.winner = 'monster';
+            this.addLogMessage('player', 'surrender', null);
         },
         restartGame() {
             this.playerHealth = 100;
             this.monsterHealth = 100;
             this.gameOver = false;
             this.roundsSinceSpecial = 3;
+            this.logs = [];
+        },
+        addLogMessage(who, what, value) {
+            switch (who) {
+                case 'player':
+                    switch (what) {
+                        case 'attack':
+                            this.logs.push("You attacked the monster, dealing "+value+" damage.");
+                            break;
+                        case 'specialAttack':
+                            this.logs.push("You special attacked the monster, dealing "+value+" damage.");
+                            break;
+                        case 'heal':
+                            this.logs.push("You healed, gaining "+value+" health.");
+                            break;
+                        case 'surrender':
+                            this.logs.push("You surrendered.");
+                            break;
+                    }
+                    break;
+                case 'monster':
+                    this.logs.push("The monster attacked you, dealing "+value+" damage.");
+                    break;
+            }
         }
     }
 });

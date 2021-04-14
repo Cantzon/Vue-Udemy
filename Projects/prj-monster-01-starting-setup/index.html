@@ -44,7 +44,9 @@
     </section>
     <section id="log" class="container">
         <h2>Battle Log</h2>
-        <ul></ul>
+        <ul v-for="log in logs">
+            <li> {{ log }}</li>
+        </ul>
     </section>
 </div>
 </body>
