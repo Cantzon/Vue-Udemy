@@ -94,21 +94,21 @@ const app = Vue.createApp({
                 case 'player':
                     switch (what) {
                         case 'attack':
-                            this.logs.push("You attacked the monster, dealing "+value+" damage.");
+                            this.logs.unshift("You attacked the monster, dealing "+value+" damage.");
                             break;
                         case 'specialAttack':
-                            this.logs.push("You special attacked the monster, dealing "+value+" damage.");
+                            this.logs.unshift("You special attacked the monster, dealing "+value+" damage.");
                             break;
                         case 'heal':
-                            this.logs.push("You healed, gaining "+value+" health.");
+                            this.logs.unshift("You healed, gaining "+value+" health.");
                             break;
                         case 'surrender':
-                            this.logs.push("You surrendered.");
+                            this.logs.unshift("You surrendered.");
                             break;
                     }
                     break;
                 case 'monster':
-                    this.logs.push("The monster attacked you, dealing "+value+" damage.");
+                    this.logs.unshift("The monster attacked you, dealing "+value+" damage.");
                     break;
             }
         }
