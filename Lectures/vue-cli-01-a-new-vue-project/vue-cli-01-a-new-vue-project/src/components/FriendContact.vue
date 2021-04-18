@@ -35,6 +35,15 @@ export default {
       default: false
     }
   },
+  emits: {
+    'toggle-favorite': function (id) {
+      if(!id) {
+        console.warn("bruh this ID aint workin");
+        return false;
+      }
+      return true;
+    }
+  },
   data() {
     return {
       visibleDetails: false
