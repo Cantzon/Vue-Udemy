@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h3>{{ name }} {{ favorite ? '(Favorite)' : ''}}</h3>
+    <h3>{{ name }} {{ favorite ? "(Favorite)" : "" }}</h3>
     <ul v-if="visibleDetails">
       <li><strong>Phone: </strong>{{ phoneNumber }}</li>
       <li><strong>Email: </strong> {{ emailAddress }}</li>
@@ -8,7 +8,7 @@
     <button @click="toggleDetails">
       {{ visibleDetails ? "Hide" : "Show" }} Details
     </button>
-    <button  @click='toggleFavorite'> Toggle Favorite </button>
+    <button @click="toggleFavorite">Toggle Favorite</button>
   </li>
 </template>
 
@@ -29,18 +29,15 @@ export default {
       required: true
     },
     isFavorite: {
-      type: Number,
+      type: Boolean,
       required: false,
-      default: 0,
-      validator: function(value) {
-        return value === 1 || value === 0;
-      }
+      default: false
     }
   },
   data() {
     return {
       visibleDetails: false,
-      favorite: this.isFavorite,
+      favorite: this.isFavorite
     };
   },
   methods: {

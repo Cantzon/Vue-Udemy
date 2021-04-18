@@ -3,15 +3,12 @@
     <header><h1>Friend List</h1></header>
     <ul>
       <friend-contact
-        name="Baba Booey"
-        email-address="oh@yeah.com"
-        phone-number="123 456"
-        is-favorite=1
-      ></friend-contact>
-      <friend-contact
-        name="Bruh Moment"
-        email-address="stop@dude.com"
-        phone-number="456 123"
+        v-for="friend in friends"
+        :key="friend.id"
+        :name="friend.name"
+        :email-address="friend.emailAddress"
+        :phone-number="friend.phoneNumber"
+        :is-favorite="true"
       ></friend-contact>
     </ul>
   </section>
@@ -24,7 +21,22 @@ export default {
   name: "App",
   components: { FriendContact },
   data() {
-    return {};
+    return {
+      friends: [
+        {
+          id: "baba",
+          name: "Baba Booey",
+          emailAddress: "oh@yeah.com",
+          phoneNumber: "123 456"
+        },
+        {
+          id: "bruh",
+          name: "Bruh Moment",
+          emailAddress: "stop@dude.com",
+          phoneNumber: "456 123"
+        }
+      ]
+    };
   }
 };
 </script>
