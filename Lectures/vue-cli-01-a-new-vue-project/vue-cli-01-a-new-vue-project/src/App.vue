@@ -1,33 +1,43 @@
 <template>
-<section>
-  <header><h1> Friend List</h1></header>
-  <ul>
-    <friend-contact name="Baba Booey" email-address="oh@yeah.com" phone-number="123 456"></friend-contact>
-    <friend-contact name="Bruh Moment" email-address="stop@dude.com" phone-number="456 123"></friend-contact>
-  </ul>
-</section>
+  <section>
+    <header><h1>Friend List</h1></header>
+    <ul>
+      <friend-contact
+        name="Baba Booey"
+        email-address="oh@yeah.com"
+        phone-number="123 456"
+        is-favorite=1
+      ></friend-contact>
+      <friend-contact
+        name="Bruh Moment"
+        email-address="stop@dude.com"
+        phone-number="456 123"
+      ></friend-contact>
+    </ul>
+  </section>
 </template>
 
 <script>
 import FriendContact from "./components/FriendContact";
+
 export default {
   name: "App",
-  components: {FriendContact},
+  components: { FriendContact },
   data() {
-    return {
-    };
+    return {};
   }
-}
+};
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
+
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 }
 
 body {
@@ -85,5 +95,4 @@ header {
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
-
 </style>
