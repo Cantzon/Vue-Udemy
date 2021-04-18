@@ -2,7 +2,8 @@
 <section>
   <header><h1> Friend List</h1></header>
   <ul>
-    <friend-contact></friend-contact>
+    <friend-contact name="Baba Booey" email-address="oh@yeah.com" phone-number="123 456"></friend-contact>
+    <friend-contact name="Bruh Moment" email-address="stop@dude.com" phone-number="456 123"></friend-contact>
   </ul>
 </section>
 </template>
@@ -14,18 +15,7 @@ export default {
   components: {FriendContact},
   data() {
     return {
-      friends: [
-        {
-          name: 'Bruh Moment',
-          phone: '123 456',
-          email: 'bruh@moment'
-        }, {
-          name: 'Baba Booey',
-          phone: '789 012',
-          email: 'stop@dude.com'
-        },
-      ]
-    }
+    };
   }
 }
 </script>
