@@ -9,6 +9,7 @@
       {{ visibleDetails ? "Hide" : "Show" }} Details
     </button>
     <button @click="toggleFavorite">Toggle Favorite</button>
+    <button @click="$emit('delete', id)"> Delete Contact </button>
   </li>
 </template>
 
@@ -42,7 +43,8 @@ export default {
         return false;
       }
       return true;
-    }
+    },
+    'delete': true,
   },
   data() {
     return {

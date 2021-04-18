@@ -5,5 +5,5 @@ import newFriend from "./components/newFriend";
 
 const app = createApp(App);
 app.component('friend-contact', FriendContact);
-app.component('new-friend', newFriend)
+app.component('new-friend', newFriend);
 app.mount('#app');
