@@ -2,11 +2,13 @@
   <div>
     <!--    <TheHeader />-->
     <the-header></the-header>
-    <button @click="switchTab('active-goals')"> Active Goals </button>
+    <button @click="switchTab('active-goals')"> Active Goals</button>
     <button @click="switchTab('manage-goals')"> Manage Goals</button>
-<!--    <active-goals></active-goals>-->
-<!--    <manage-goals></manage-goals>-->
-    <component :is="selectedTab"></component>
+    <!--    <active-goals></active-goals>-->
+    <!--    <manage-goals></manage-goals>-->
+    <keep-alive>
+      <component :is="selectedTab"></component>
+    </keep-alive>
   </div>
 </template>
 
