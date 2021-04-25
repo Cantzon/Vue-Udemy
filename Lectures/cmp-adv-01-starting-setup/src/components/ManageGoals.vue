@@ -1,18 +1,21 @@
 <template>
   <div>
     <h2> Manage Goals </h2>
-    <input type="text" ref="goal" />
-    <button @click="addGoal"> Add Goal </button>
-    <error-alert v-if="showError">
-      <h2> Error!</h2>
-      <p> Please enter a valid goal. </p>
-      <button @click="showError = !showError"> Chill okay dude  </button>
-    </error-alert>
+    <input type="text" ref="goal"/>
+    <button @click="addGoal"> Add Goal</button>
+    <teleport to="body">
+      <error-alert v-if="showError">
+        <h2> Error!</h2>
+        <p> Please enter a valid goal. </p>
+        <button @click="showError = !showError"> Chill okay dude</button>
+      </error-alert>
+    </teleport>
   </div>
 </template>
 
 <script>
 import ErrorAlert from "@/components/ErrorAlert";
+
 export default {
   name: "ManageGoals",
   components: {ErrorAlert},
@@ -24,7 +27,7 @@ export default {
   methods: {
     addGoal() {
       const enteredVal = this.$refs.goal.value;
-      if (enteredVal === ''){
+      if (enteredVal === '') {
         this.showError = true;
       }
     }
