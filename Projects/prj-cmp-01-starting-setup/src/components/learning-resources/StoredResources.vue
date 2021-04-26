@@ -5,7 +5,8 @@
       :key='res.id'
       :title='res.title'
       :description='res.description'
-      :link='res.link'>
+      :link='res.link'
+      @deleteRes='deleteResource(res.id)'>
     </learning-resource>
   </ul>
 </template>
@@ -16,7 +17,7 @@ import LearningResource from './LearningResource';
 export default {
   name: 'StoredResources',
   components: { LearningResource },
-  inject: ['resources']
+  inject: ['resources', 'deleteResource'],
 };
 </script>
 
