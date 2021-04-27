@@ -2,6 +2,7 @@
   <ul>
     <user-item v-for="user in users" :key="user.id" :name="user.fullName" :role="user.role"></user-item>
   </ul>
+  <button @click='navButtonClick'>Go to teams</button>
 </template>
 
 <script>
@@ -12,6 +13,12 @@ export default {
     UserItem,
   },
   inject: ['users'],
+  methods: {
+    navButtonClick() {
+      // DO some thing here
+      this.$router.push('/teams');
+    }
+  }
 };
 </script>
 
