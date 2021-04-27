@@ -16,18 +16,27 @@
 import UserItem from '../users/UserItem.vue';
 
 export default {
+  inject: ['teams', 'users'],
   components: {
     UserItem
   },
   data() {
     return {
-      teamName: 'Test',
-      members: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
-      ],
+      teamName: '',
+      members: [],
     };
   },
+  created() {
+    const workingID = this.$route.params.teamId;
+    const selectedTeam = this.teams.find(el => el.id === workingID);
+    this.teamName = selectedTeam.name;
+    const memberList = [];
+    for(const memberID of selectedTeam.members) {
+      const member = this.users.find(el => el.id === memberID);
+      memberList.push(member);
+    }
+    this.members = memberList;
+  }
 };
 </script>
 
