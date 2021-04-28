@@ -3,10 +3,10 @@
     <h2>{{ teamName }}</h2>
     <ul>
       <user-item
-        v-for="member in members"
-        :key="member.id"
-        :name="member.fullName"
-        :role="member.role"
+        v-for='member in members'
+        :key='member.id'
+        :name='member.fullName'
+        :role='member.role'
       ></user-item>
     </ul>
     <router-link to='/teams/t2'> Go to team 2</router-link>
@@ -25,19 +25,19 @@ export default {
   data() {
     return {
       teamName: '',
-      members: [],
+      members: []
     };
   },
   methods: {
-    loadTeamMembers(teamId){
+    loadTeamMembers(teamId) {
       const workingID = teamId;
       const selectedTeam = this.teams.find(el => el.id === workingID);
-      if(!selectedTeam){
+      if (!selectedTeam) {
         return;
       }
       this.teamName = selectedTeam.name;
       const memberList = [];
-      for(const memberID of selectedTeam.members) {
+      for (const memberID of selectedTeam.members) {
         const member = this.users.find(el => el.id === memberID);
         memberList.push(member);
       }
@@ -48,7 +48,7 @@ export default {
     this.loadTeamMembers(this.teamId);
   },
   watch: {
-    teamId(newId){
+    teamId(newId) {
       this.loadTeamMembers(newId);
     }
   }

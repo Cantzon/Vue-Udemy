@@ -5,6 +5,8 @@ import TeamsList from '@/components/teams/TeamsList';
 import UsersList from '@/components/users/UsersList';
 import TeamMembers from '@/components/teams/TeamMembers';
 import NotFound from '@/components/nav/NotFound';
+import TeamsFooter from '@/components/teams/TeamsFooter';
+import UsersFooter from '@/components/users/UsersFooter';
 
 
 const router = createRouter({
@@ -12,11 +14,11 @@ const router = createRouter({
   routes: [
     { path: '/', redirect: '/teams' },
     {
-      name: 'teams', path: '/teams', component: TeamsList, children: [
+      name: 'teams', path: '/teams', components: { default: TeamsList, footer: TeamsFooter }, children: [
         { name: 'team-members', path: '/teams/:teamId', component: TeamMembers, props: true }
       ]
     },
-    { path: '/users', component: UsersList },
+    { path: '/users', components: { default: UsersList, footer: UsersFooter } },
     { path: '/:notFound(.*)', component: NotFound }
   ]
 });
