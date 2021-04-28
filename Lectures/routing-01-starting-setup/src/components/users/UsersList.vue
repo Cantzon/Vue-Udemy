@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <user-item v-for="user in users" :key="user.id" :name="user.fullName" :role="user.role"></user-item>
+    <user-item v-for='user in users' :key='user.id' :name='user.fullName' :role='user.role'></user-item>
   </ul>
   <button @click='navButtonClick'>Go to teams</button>
 </template>
@@ -10,7 +10,7 @@ import UserItem from './UserItem.vue';
 
 export default {
   components: {
-    UserItem,
+    UserItem
   },
   inject: ['users'],
   methods: {
@@ -18,6 +18,11 @@ export default {
       // DO some thing here
       this.$router.push('/teams');
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log('userslist beforeRouteEnter');
+    console.log(to, from);
+    next();
   }
 };
 </script>
