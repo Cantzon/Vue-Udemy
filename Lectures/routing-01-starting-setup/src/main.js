@@ -19,7 +19,9 @@ const router = createRouter({
       ]
     },
     {
-      path: '/users', components: { default: UsersList, footer: UsersFooter },
+      path: '/users',
+      meta: { needsAuth: true },
+      components: { default: UsersList, footer: UsersFooter },
       beforeEnter(to, from, next) {
         console.log('users beforeEnter');
         console.log(to, from);
@@ -40,7 +42,12 @@ const router = createRouter({
 router.beforeEach(function(to, from, next) {
   console.log('Global beforeEach');
   console.log(to, from);
-  next();
+  if (to.meta.needsAuth) {
+    console.log('needs auth');
+    next();
+  } else {
+    next();
+  }
 });
 
 const app = createApp(App);
