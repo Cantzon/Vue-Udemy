@@ -65,6 +65,11 @@ li {
   transition: all 1s ease-out;
 }
 .list-group-leave-active {
-  transition: all 1s ease-in;
+  transition: all 0.3s ease-in;
+  position: absolute;
+}
+
+.list-group-move {
+  transition: all 1s ease;
 }
 </style>
