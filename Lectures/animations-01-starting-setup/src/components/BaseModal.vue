@@ -34,5 +34,17 @@ dialog {
   background-color: white;
   z-index: 100;
   border: none;
+  animation: dialogFade 0.5s;
+}
+
+@keyframes dialogFade {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 100;
+    transform: translateY(0);
+  }
 }
 </style>
