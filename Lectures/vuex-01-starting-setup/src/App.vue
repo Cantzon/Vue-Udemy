@@ -2,6 +2,10 @@
   <base-container title='Vuex'>
     <the-counter></the-counter>
     <button @click='addOne'> Add 1</button>
+    <div>
+      <input type='number' v-model.number='howMuch'/>
+      <button @click='addValue'> Add {{ howMuch }}</button>
+    </div>
   </base-container>
 </template>
 
@@ -14,9 +18,20 @@ export default {
     TheCounter,
     BaseContainer
   },
+  data(){
+    return {
+      howMuch: 0,
+    }
+  },
   methods: {
     addOne(){
       this.$store.commit('increment');
+    },
+    addValue(){
+      this.$store.commit({
+        type: 'increase',
+        value : this.howMuch,
+      });
     }
   }
 };
