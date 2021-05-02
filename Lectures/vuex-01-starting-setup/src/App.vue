@@ -4,7 +4,7 @@
     <h3> {{ normalizedCounter }}</h3>
     <button @click='addOne'> Add 1</button>
     <div>
-      <input type='number' v-model.number='howMuch'/>
+      <input type='number' v-model.number='howMuch' />
       <button @click='addValue'> Add {{ howMuch }}</button>
     </div>
   </base-container>
@@ -19,10 +19,10 @@ export default {
     TheCounter,
     BaseContainer
   },
-  data(){
+  data() {
     return {
-      howMuch: 0,
-    }
+      howMuch: 0
+    };
   },
   computed: {
     normalizedCounter() {
@@ -30,13 +30,13 @@ export default {
     }
   },
   methods: {
-    addOne(){
-      this.$store.commit('increment');
+    addOne() {
+      this.$store.dispatch('increment');
     },
-    addValue(){
-      this.$store.commit({
+    addValue() {
+      this.$store.dispatch({
         type: 'increase',
-        value : this.howMuch,
+        value: this.howMuch
       });
     }
   }
