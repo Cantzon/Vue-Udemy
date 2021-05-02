@@ -1,36 +1,41 @@
 <template>
-  <div class='container'>
-    <users-list></users-list>
-  </div>
-  <div class="container">
-    <div class="block" :class="{ animate: animating }"></div>
-    <button @click="animateBlock">Animate</button>
-  </div>
-  <div class="container">
-    <transition>
-      <p v-if="visiblePara">Visible</p>
+<!--  <div class='container'>-->
+<!--    <users-list></users-list>-->
+<!--  </div>-->
+<!--  <div class="container">-->
+<!--    <div class="block" :class="{ animate: animating }"></div>-->
+<!--    <button @click="animateBlock">Animate</button>-->
+<!--  </div>-->
+<!--  <div class="container">-->
+<!--    <transition>-->
+<!--      <p v-if="visiblePara">Visible</p>-->
+<!--    </transition>-->
+<!--    <button @click="paraVisible">Toggle Paragraph</button>-->
+<!--  </div>-->
+<!--  <div class="container">-->
+<!--    <transition name="users" mode="out-in">-->
+<!--      <button @click="showUsers" v-if="!visibleUsers">Show Users</button>-->
+<!--      <button @click="hideUsers" v-else>Hide Users</button>-->
+<!--    </transition>-->
+<!--  </div>-->
+<!--  <base-modal @close="hideDialog" :open="dialogIsVisible">-->
+<!--    <p>This is a test dialog!</p>-->
+<!--    <button @click="hideDialog">Close it!</button>-->
+<!--  </base-modal>-->
+<!--  <div class="container">-->
+<!--    <button @click="showDialog">Show Dialog</button>-->
+<!--  </div>-->
+  <router-view v-slot='slotProps'>
+    <transition name='route' mode='out-in'>
+      <component :is='slotProps.Component'></component>
     </transition>
-    <button @click="paraVisible">Toggle Paragraph</button>
-  </div>
-  <div class="container">
-    <transition name="users" mode="out-in">
-      <button @click="showUsers" v-if="!visibleUsers">Show Users</button>
-      <button @click="hideUsers" v-else>Hide Users</button>
-    </transition>
-  </div>
-  <base-modal @close="hideDialog" :open="dialogIsVisible">
-    <p>This is a test dialog!</p>
-    <button @click="hideDialog">Close it!</button>
-  </base-modal>
-  <div class="container">
-    <button @click="showDialog">Show Dialog</button>
-  </div>
+  </router-view>
 </template>
 
 <script>
-import UsersList from '@/components/UsersList';
+// import UsersList from '@/components/UsersList';
 export default {
-  components: { UsersList },
+  // components: { UsersList },
   data() {
     return {
       dialogIsVisible: false,
@@ -158,6 +163,23 @@ button:active {
 
 .users-leave-active {
   transition: opacity 0.3s ease-in;
+}
+
+.route-enter-active {
+  transition: all 0.5s ease-out;
+}
+.route-enter-from,
+.route-leave-to {
+  transform: scale(0.1);
+  opacity: 0;
+}
+.route-enter-to,
+.route-leave-from{
+  transform: scale(1);
+  opacity: 1;
+}
+.route-leave-active {
+  transition: all 0.5s ease-in;
 }
 
 @keyframes slide-fade {
