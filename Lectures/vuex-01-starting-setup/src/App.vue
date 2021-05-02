@@ -1,6 +1,7 @@
 <template>
   <base-container title='Vuex'>
     <the-counter></the-counter>
+    <h3> {{ normalizedCounter }}</h3>
     <button @click='addOne'> Add 1</button>
     <div>
       <input type='number' v-model.number='howMuch'/>
@@ -21,6 +22,11 @@ export default {
   data(){
     return {
       howMuch: 0,
+    }
+  },
+  computed: {
+    normalizedCounter() {
+      return this.$store.getters.normalizedCounter;
     }
   },
   methods: {
