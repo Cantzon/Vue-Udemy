@@ -1,5 +1,5 @@
 <template>
-  <base-container title='Vuex'>
+  <base-container title='Vuex' v-if='loggedIn'>
     <the-counter></the-counter>
     <h3> {{ normalizedCounter }}</h3>
     <button @click='increment'> Add 1</button>
@@ -8,15 +8,20 @@
       <button @click='increase({value: howMuch})'> Add {{ howMuch }}</button>
     </div>
   </base-container>
+  <base-container title='Auth'>
+    <user-auth></user-auth>
+  </base-container>
 </template>
 
 <script>
 import BaseContainer from './components/BaseContainer.vue';
 import TheCounter from './components/TheCounter';
 import { mapGetters, mapActions } from 'vuex';
+import UserAuth from './components/UserAuth';
 
 export default {
   components: {
+    UserAuth,
     TheCounter,
     BaseContainer
   },
@@ -29,7 +34,7 @@ export default {
     // normalizedCounter() {
     //   return this.$store.getters.normalizedCounter;
     // }
-    ...mapGetters(['normalizedCounter'])
+    ...mapGetters(['normalizedCounter', 'loggedIn'])
   },
   methods: {
     // addOne() {
