@@ -31,15 +31,15 @@ export default {
       dialogIsVisible: false,
       animating: false,
       visiblePara: false,
-      visibleUsers: false,
+      visibleUsers: false
     };
   },
   methods: {
-    showUsers(){
-      this.visibleUsers= true;
+    showUsers() {
+      this.visibleUsers = true;
     },
-    hideUsers(){
-      this.visibleUsers=false;
+    hideUsers() {
+      this.visibleUsers = false;
     },
     showDialog() {
       this.dialogIsVisible = true;
@@ -139,7 +139,7 @@ button:active {
 
 .users-enter-from,
 .users-leave-to {
-  opacity:0;
+  opacity: 0;
 }
 
 .users-enter-to,
@@ -150,6 +150,7 @@ button:active {
 .users-enter-active {
   transition: opacity 0.3s ease-in;
 }
+
 .users-leave-active {
   transition: opacity 0.3s ease-in;
 }
