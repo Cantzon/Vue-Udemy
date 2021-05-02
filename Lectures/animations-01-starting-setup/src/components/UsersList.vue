@@ -1,11 +1,11 @@
 <template>
-<ul>
-  <li v-for='user in users' :key='user' @click='removeUser(user)'> {{user}}</li>
-</ul>
-<div>
-  <input type='text' ref='addUser'>
-  <button @click='addUser'>Add User</button>
-</div>
+  <transition-group tag='ul' name='list-group'>
+    <li v-for='user in users' :key='user' @click='removeUser(user)'> {{ user }}</li>
+  </transition-group>
+  <div>
+    <input type='text' ref='addUser'>
+    <button @click='addUser'>Add User</button>
+  </div>
 </template>
 
 <script>
@@ -13,15 +13,15 @@ export default {
   name: 'UsersList',
   data() {
     return {
-      users: ['Hari', 'Raghid', 'Zuhair', 'Mariyam', 'Dina', 'Zan', 'Faiha'],
-    }
+      users: ['Hari', 'Raghid', 'Zuhair', 'Mariyam', 'Dina', 'Zan', 'Faiha']
+    };
   },
   methods: {
-    addUser(){
+    addUser() {
       const newUser = this.$refs.addUser;
       this.users.unshift(newUser.value);
     },
-    removeUser(user){
+    removeUser(user) {
       this.users = this.users.filter(el => el !== user);
     }
   }
@@ -39,5 +39,32 @@ li {
   padding: 0.5rem;
   text-align: center;
 
+}
+
+.list-group-enter-from {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.list-group-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.list-group-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.list-group-leave-to {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.list-group-enter-active {
+  transition: all 1s ease-out;
+}
+.list-group-leave-active {
+  transition: all 1s ease-in;
 }
 </style>
