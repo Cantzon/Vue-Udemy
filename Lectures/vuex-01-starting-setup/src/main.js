@@ -30,12 +30,12 @@ const store = createStore({
     }
   },
   actions: {
-    increment(context){
+    increment(context) {
       setTimeout(function() {
         context.commit('increment');
       }, 2000);
     },
-    increase(context, payload){
+    increase(context, payload) {
       context.commit('increase', payload);
     }
   }

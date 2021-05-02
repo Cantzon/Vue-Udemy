@@ -2,10 +2,10 @@
   <base-container title='Vuex'>
     <the-counter></the-counter>
     <h3> {{ normalizedCounter }}</h3>
-    <button @click='addOne'> Add 1</button>
+    <button @click='increment'> Add 1</button>
     <div>
       <input type='number' v-model.number='howMuch' />
-      <button @click='addValue'> Add {{ howMuch }}</button>
+      <button @click='increase({value: howMuch})'> Add {{ howMuch }}</button>
     </div>
   </base-container>
 </template>
@@ -13,6 +13,7 @@
 <script>
 import BaseContainer from './components/BaseContainer.vue';
 import TheCounter from './components/TheCounter';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   components: {
@@ -25,20 +26,22 @@ export default {
     };
   },
   computed: {
-    normalizedCounter() {
-      return this.$store.getters.normalizedCounter;
-    }
+    // normalizedCounter() {
+    //   return this.$store.getters.normalizedCounter;
+    // }
+    ...mapGetters(['normalizedCounter'])
   },
   methods: {
-    addOne() {
-      this.$store.dispatch('increment');
-    },
-    addValue() {
-      this.$store.dispatch({
-        type: 'increase',
-        value: this.howMuch
-      });
-    }
+    // addOne() {
+    //   this.$store.dispatch('increment');
+    // },
+    // addValue() {
+    //   this.$store.dispatch({
+    //     type: 'increase',
+    //     value: this.howMuch
+    //   });
+    // }
+    ...mapActions(['increment', 'increase'])
   }
 };
 </script>
