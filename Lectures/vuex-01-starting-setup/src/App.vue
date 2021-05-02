@@ -1,5 +1,5 @@
 <template>
-  <base-container title="Vuex"></base-container>
+  <base-container title='Vuex'></base-container>
 </template>
 
 <script>
@@ -7,8 +7,8 @@ import BaseContainer from './components/BaseContainer.vue';
 
 export default {
   components: {
-    BaseContainer,
-  },
+    BaseContainer
+  }
 };
 </script>
 
