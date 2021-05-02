@@ -3,11 +3,17 @@
     <div class="block" :class="{ animate: animating }"></div>
     <button @click="animateBlock">Animate</button>
   </div>
-  <div class='container'>
+  <div class="container">
     <transition>
-    <p v-if='visiblePara'> Visible </p>
+      <p v-if="visiblePara">Visible</p>
     </transition>
-    <button @click='paraVisible'> Toggle Paragraph </button>
+    <button @click="paraVisible">Toggle Paragraph</button>
+  </div>
+  <div class="container">
+    <transition name="users" mode="out-in">
+      <button @click="showUsers" v-if="!visibleUsers">Show Users</button>
+      <button @click="hideUsers" v-else>Hide Users</button>
+    </transition>
   </div>
   <base-modal @close="hideDialog" :open="dialogIsVisible">
     <p>This is a test dialog!</p>
@@ -25,9 +31,16 @@ export default {
       dialogIsVisible: false,
       animating: false,
       visiblePara: false,
+      visibleUsers: false,
     };
   },
   methods: {
+    showUsers(){
+      this.visibleUsers= true;
+    },
+    hideUsers(){
+      this.visibleUsers=false;
+    },
     showDialog() {
       this.dialogIsVisible = true;
     },
@@ -124,6 +137,23 @@ button:active {
   transform: translateY(-10px);
 }
 
+.users-enter-from,
+.users-leave-to {
+  opacity:0;
+}
+
+.users-enter-to,
+.users-leave-from {
+  opacity: 1;
+}
+
+.users-enter-active {
+  transition: opacity 0.3s ease-in;
+}
+.users-leave-active {
+  transition: opacity 0.3s ease-in;
+}
+
 @keyframes slide-fade {
   0% {
     transform: translateX(0) scale(1);
@@ -131,7 +161,7 @@ button:active {
   50% {
     transform: translateX(-70px) scale(1.2);
   }
-  100%{
+  100% {
     transform: translateX(-150px) scale(1);
   }
 }
