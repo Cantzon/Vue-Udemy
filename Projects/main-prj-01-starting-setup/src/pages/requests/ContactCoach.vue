@@ -1,10 +1,10 @@
 <template>
-  <h2>Users Footer</h2>
+bruh
 </template>
 
 <script>
 export default {
-  name: 'UsersFooter'
+  name: 'ContactCoach'
 };
 </script>
 

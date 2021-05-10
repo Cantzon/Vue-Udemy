@@ -1,11 +1,11 @@
 <template>
-  <h2>Active Goals</h2>
+bruh
 </template>
 
 <script>
 export default {
-  name: "ActiveGoals"
-}
+  name: 'CoachRegister'
+};
 </script>
 
 <style scoped>

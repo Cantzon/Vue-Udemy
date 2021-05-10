@@ -1,10 +1,10 @@
 <template>
-  <h2>Teams Footer</h2>
+ bruh
 </template>
 
 <script>
 export default {
-  name: 'TeamsFooter'
+  name: 'RequestsList'
 };
 </script>
 
