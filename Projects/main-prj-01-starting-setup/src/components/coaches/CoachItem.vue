@@ -3,11 +3,11 @@
     <h3>{{ fullName }}</h3>
     <h4>${{ rate }}/hour</h4>
     <div>
-      <span v-for="area in areas" :key="area"> {{ area }}</span>
+      <base-badge v-for="area in areas" :key="area" :type='area' :title='area'></base-badge>
     </div>
-    <div id="actions">
-      <router-link :to='coachContactLink'> Contact</router-link>
-      <router-link :to='coachDetailsLink'> View Details</router-link>
+    <div class="actions">
+      <base-button link mode='outline' :to="coachContactLink"> Contact</base-button>
+      <base-button link :to="coachDetailsLink"> View Details</base-button>
     </div>
   </li>
 </template>
@@ -17,14 +17,14 @@ export default {
   name: 'CoachItem',
   props: ['id', 'areas', 'rate', 'firstName', 'lastName'],
   computed: {
-    fullName(){
+    fullName() {
       return this.firstName + ' ' + this.lastName;
     },
-    coachContactLink(){
-      return this.$route.path + '/' +this.id+'/contact';
+    coachContactLink() {
+      return this.$route.path + '/' + this.id + '/contact';
     },
-    coachDetailsLink(){
-      return this.$route.path + '/' +this.id+'/';
+    coachDetailsLink() {
+      return this.$route.path + '/' + this.id + '/';
     }
   }
 };
@@ -55,6 +55,4 @@ div {
   display: flex;
   justify-content: flex-end;
 }
-
-
 </style>
