@@ -9,6 +9,7 @@
     <base-card>
       <h3>Interested? Click the button below!</h3>
       <base-button link :to="contactLink">Contact</base-button>
+      <router-view></router-view>
     </base-card>
   </section>
   <section>
